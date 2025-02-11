@@ -1,0 +1,14 @@
+spring:
+  application:
+  name: personal-finance-tracker
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finance-tracker
+    username: postgres
+    password: mypassword
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true

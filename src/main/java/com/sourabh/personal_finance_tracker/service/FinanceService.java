@@ -16,6 +16,10 @@ public class FinanceService {
         return financeRepo.findAll();
     }
 
+    public Integer getSummary(){
+        return financeRepo.findAll().stream().mapToInt(Finance::getAmount).sum();
+    }
+
     public Finance getData(Integer id){
         return financeRepo.findById(id).orElseThrow(()-> new RuntimeException("Not found!!"));
     }

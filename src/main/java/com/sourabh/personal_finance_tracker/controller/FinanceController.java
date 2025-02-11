@@ -19,7 +19,12 @@ public class FinanceController {
     @GetMapping("/entries")
     public ResponseEntity<List<Finance>> getData(){
         List<Finance> data = financeService.getAllData();
-        return new ResponseEntity<>(data, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<Integer> getSummary(){
+        return new ResponseEntity<>(financeService.getSummary(), HttpStatus.OK);
     }
 
     @GetMapping("/entries/{id}")
@@ -32,7 +37,7 @@ public class FinanceController {
         return new ResponseEntity<>(financeService.createRecord(data), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/entries/{id}")
     public ResponseEntity<Finance> updateTransaction(@PathVariable Integer id, @RequestBody Finance data) {
         return ResponseEntity.ok(financeService.updateRecord(id, data));
     }
